@@ -1,21 +1,13 @@
-# Use the golang container and give it a friendly alias using AS
-FROM golang:1.21.0 AS gobuild
-ENV GO111MODULE=off
-# Set our working directory
-WORKDIR /go/src/bjss.com/academy/hello
+FROM golang:1.23.0-alpine3.19
 
-# Copy the source file
-COPY app.go .
+RUN mkdir /app
 
-# build the app
-RUN go build -a -o app .
+ADD . /app
 
-# Stage 2
-FROM alpine:3.17
+WORKDIR /app
 
-WORKDIR /app/
+EXPOSE 8080
 
-# Copy the app from the first container
-COPY --from=gobuild /go/src/bjss.com/academy/hello/app .
-CMD ["./app"]
- 
+RUN go build -o main .
+
+CMD ["/app/main"]
