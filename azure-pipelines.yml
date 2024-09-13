@@ -32,7 +32,7 @@ stages:
 
 variables:
   dockerRegistryServiceConnection: 'Docker ACR'
-  imageRepository: 'amiga/jack-anderson-example-app' #eg 'amiga/dan-webb-example-app'
+  imageRepository: 'commodore/zahra-hasan-goapp' #eg 'amiga/dan-webb-example-app'
   containerRegistry: 'acrbjssacademy.azurecr.io' # eg 'acrbjssacademy.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
